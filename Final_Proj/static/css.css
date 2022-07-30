@@ -1,0 +1,476 @@
+:root{
+    --pink: rgb(240, 128, 128);
+    --headcolor:  #17eaa4;
+    --bej: rgb(213, 213, 148);
+    --black: #222;
+    --gold: gold;
+    --hover: rgba(0, 0, 0, 0.6);
+    
+  }
+  body{
+    -image: url(../static/Main_page_photo.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family:myFirstFont ;
+}
+body{
+  background-image: url(../static/Main_page_photo.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  font-family:myFirstFont ;
+  animation: fadeIn 2s
+}
+.body2{
+background-image: url(../static/photoBlur.jpg);
+background-repeat: no-repeat;
+background-size: cover;
+  font-family:myFirstFont ;
+  color:white;
+  animation: fadeIn 2s
+/* position: fixed;   */
+}
+@keyframes fadeIn {
+  0% {opacity: 0;}
+  100% {opacity: 1;}
+}
+.container {
+  padding-right: 10px;
+  background:transparent;
+  
+} 
+.container::after {
+  content: '';
+  display: table;
+  clear: both;
+}
+.logo {
+  float: left;
+  margin-left: 60px ;
+  font-family: mySecondFont;
+  font-size: 50px;
+  color: var(--headcolor);
+  margin-top: 15px;
+
+}
+
+  
+  /* nav -----------------------------------------------------------------------*/
+
+@media only screen and (max-width: 1200px) {
+  .mainGrid{
+      display: grid;
+      grid-template-areas:
+      'Nav'
+      'Body'
+      'Picture'
+      ;
+  }
+}
+.parkingNav{
+  grid-area: Nav;
+}
+.mainbtn{
+  grid-area: Body;
+}
+
+  .active {
+    color: var(--black);
+    background-color:var(--headcolor);
+    border-radius: 4px;
+  }
+  #services {
+    color: white;
+    background-color:unset;
+  }
+
+/* nav -----------------------------------------------------------------------*/
+
+.active {
+  color: var(--black);
+  background-color:var(--headcolor);
+  border-radius: 4px;
+}
+#services {
+  color: white;
+  background-color:unset;
+
+}
+
+
+nav {
+  float: left;
+  margin-left: 30px;
+}
+
+
+nav ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+nav li {
+  display: inline-block;
+  margin-left:40px;
+  padding-top: 43px;
+  position: relative;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 14px;
+  padding: 10px;
+}
+
+nav a:hover {
+  color: var(--black);
+  background-color:var(--headcolor);
+  border-radius: 4px;
+}
+
+nav a::before {
+  content: '';
+  display: block;
+  height: 5px;
+  background-color: var(--gray);
+
+  position: absolute;
+  top: 0;
+  width: 0%;
+
+  transition: all ease-in-out 250ms;
+}
+
+nav a:hover::before {
+  width: 100%;
+}
+
+
+
+
+/* buttons for the main */
+.buttonsContainer{
+float: left;
+  width: 40%;
+  padding: 10px;
+  margin-left:100px;
+  margin-top: 50px;
+
+}
+
+.button-56 {
+
+text-decoration: none;
+align-items: center;
+background-color: #e3fef3;
+border: 2px solid #111;
+border-radius: 8px;
+box-sizing: border-box;
+color: #111;
+cursor: pointer;
+display:flex;
+font-size: 16px;
+height: 48px;
+justify-content: center;
+line-height: 24px;
+/* padding: 0 25px; */
+position: relative;
+text-align: center;
+touch-action: manipulation;
+width: 200px;
+font-family:  myFirstFont;
+
+}
+#upper{
+  margin-bottom: 100px;
+}
+.button-56 a {
+  color: var(--gray);
+  text-decoration: none;
+}
+
+.button-56:after {
+background-color: #111;
+border-radius: 8px;
+content: "";
+display: block;
+height: 48px;
+left: 0;
+width: 100%;
+position: absolute;
+top: -2px;
+transform: translate(8px, 8px);
+transition: transform .2s ease-out;
+z-index: -1;
+}
+#button2 {
+  visibility:hidden;
+}
+
+.button-56:hover:after {
+transform: translate(0, 0);
+}
+
+.button-56:active {
+background-color: #ffdeda;
+outline: 0;
+}
+
+.button-56:hover {
+outline: 0;
+}
+
+.tohen {
+float:left;
+width: 50%;
+font-size: large;
+margin-top: 100px;
+margin-bottom:400px;
+margin-left: 100px;
+position: relative;
+}
+.about_us {
+width: 50%;
+margin-top: 10px;
+margin-left: 100px;
+margin-right: 0px;
+color: white;
+display: flow-root;
+background-color:rgba(0, 0, 0, 0.7);
+border-radius: 15px;
+padding-left: 50px;
+margin-right: 100px;
+font-size: larger;
+}
+.our_vision {
+margin-top: 10px;
+margin-right: 0px;
+color: white;
+display: flow-root;
+text-align: start;
+font-size: x-large;
+background-color:rgba(0, 0, 0, 0.7);
+border-radius: 15px;
+padding-left: 50px;
+margin-right: 100px;
+}
+.nearbyBtn{
+padding: 1.3em 3em;
+font-size: 12px;
+text-transform: uppercase;
+letter-spacing: 2.5px;
+font-weight: 500;
+color: #000;
+background-color: var(--headcolor);
+border: none;
+border-radius: 45px;
+box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+transition: all 0.3s ease 0s;
+cursor: pointer;
+outline: none;
+font-family: myFirstFont;
+margin-top: 60px;
+margin-left: 90px;
+margin-bottom: 70px;
+
+}
+
+.nearbyBtn:hover {
+background-color: #23c483;
+box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+color: #fff;
+transform: translateY(-7px);
+}
+
+.nearbyBtn:active {
+transform: translateY(-1px);
+}
+#brands {
+  width: 300px;
+}
+#map {
+  height: 350px;
+  width: 450px;
+  border-radius: 10px;
+  margin-bottom: 30px;
+}
+#afterNearby{
+visibility:hidden;
+}
+.compare label{
+margin-left: 220px;
+font-size: large;
+}
+.compare input{
+margin-top: 10px;
+margin-left: 140px;
+font-size: 20px;
+background-color: #e3fef3;
+border: 2px solid #111;
+border-radius: 8px;
+height: max-content;
+width: 250px;
+}
+#calculate{
+margin-left: 200px;
+margin-top: 40px;
+}
+#findParking{
+  margin-top: 10px;
+  margin-left: 20px;
+  border-radius: 20px;
+}
+#city{
+margin-bottom: 20px;
+margin-top: 92px ;
+top: 2%;
+right: 2%;
+height: 20px;
+background-color: #e3fef3;
+border: 2px solid #111;
+border-radius: 8px;
+color: #111;
+font-family:  myFirstFont;
+width: 150px;
+height: 30px;
+}
+#findScooter_parking{
+visibility: hidden;
+}
+#parking_pic{
+margin-top: 100px;
+height: 350px;
+width: 450px;
+border-radius: 10px;
+margin-bottom: 30px;
+}
+
+#find{
+  text-decoration: none;
+  align-items: center;
+  font-family:  myFirstFont;
+  line-height: 24px;
+  width: 100px;
+  border-radius: 8px;
+  background-color: var(--headcolor);
+  color: #111;
+  height: 30px;
+  margin-left: 50px;
+}
+
+#city{
+  margin-bottom: 20px;
+  margin-top: 92px ;
+  top: 2%;
+  right: 2%;
+  height: 20px;
+  background-color: #e3fef3;
+  border: 2px solid #111;
+  border-radius: 8px;
+  color: #111;
+  font-family:  myFirstFont;
+  width: 150px;
+  height: 30px;
+}
+#findScooter_parking{
+  visibility: hidden;
+}
+#parking_pic{
+  margin-top: 100px;
+  height: 350px;
+  width: 450px;
+  border-radius: 10px;
+  margin-bottom: 30px;
+}
+#parkingPic{
+  grid-area: Picture;
+}
+@font-face {
+  font-family: myFirstFont;
+  src: url(../static/Dosis-ExtraBold.ttf);
+
+}
+@font-face {
+font-family: mySecondFont;
+src: url(../static/Merienda-Regular.ttf);
+
+}
+#aftercompare
+{
+visibility: hidden;
+
+}
+table {
+font-size:larger;
+min-width: 400px;
+text-align: center;
+margin-bottom: 20px;
+padding-left:40px;
+font-size: 16px;
+
+}
+#aftercompareBtn{
+float: left;
+position: absolute;
+align-items: center;
+float:right;
+margin-top: 20px;
+margin-left: 200px;
+}
+table #hd{
+background-color: #000;
+text-align: center;
+}
+#pic{
+height:60px;
+width:90px;
+}
+@media screen and (max-width: 1000px) {
+  .homeGrid{
+    display: grid;
+    grid-template-areas:
+    'nav'
+    'buttons'
+    'vision';
+  }
+}
+
+.nav_grid{
+  grid-area: nav;
+}
+
+.buttons_grid{
+  grid-area: buttons;
+}
+
+.vision_grid{
+  grid-area: vision;
+}
+
+@media screen and (max-width: 1000px) {
+  .bigGrid{
+    display: grid;
+    grid-template-areas:
+    'first'
+    'second'
+    'third';
+  }
+  .tohen{
+    margin-bottom: 0px;
+    margin-top: 0px;
+  }
+  .buttonsContainer{
+    margin-top: 30px;
+  }
+}
+.navFindmy{
+  grid-area: first;
+}
+.mainBody{
+  grid-area: second;
+}
+.mapetc{
+  grid-area: third;
+}

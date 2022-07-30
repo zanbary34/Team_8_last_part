@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block tohen %}
+<div class="mainBody">
+        <div  class="buttonsContainer">
+          <span id="button1">
+            <button  class="button-56" role="button">Find A Scotter</button>
+          </span>
+          <span  id="button2">
+            <button class="button-56" role="button">Park My Scooter</button>
+          </span>
+        </div>
+        <div class="tohen">
+          <div>
+            <label for="brand">brand: </label>
+            <select id="brands" name="brands" multiple>
+              <option selected value="1">Lime</option>
+              <option selected value="2">Bird</option>
+              <option selected value="3">Wind</option>
+            </select>
+          </div>
+            <button class="nearbyBtn" onclick="GetLocation()">Nearby Scooters</button></br>
+          </div>
+        </div>
+        <div class="mapetc" >
+          <div id="map"></div>
+          <div id="afterNearby">
+            <span class="compare">
+              <label for="prices">Compare Prices: </label><br>
+            </span>
+            <span class="compare">
+              <input id="distInput" type="number" min="0" max="10"  placeholder=" Estimated Distance (km)" name="min" value=""><br>
+              <button class="nearbyBtn" id="calculate" onclick="calculate()">calculate</button>
+            </span>
+          </div>
+            <div id="aftercompare">
+              <table>
+              </table>
+              <div><button class="nearbyBtn" id="aftercompareBtn" onclick="location.href='find_my.html';">Re-Select</button>
+              </div>
+            </div>
+          <script src="../static/js.js" ></script>
+        </div>
+    </div>
+  </div>
+{% endblock %}
