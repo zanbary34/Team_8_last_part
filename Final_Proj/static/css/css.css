@@ -8,20 +8,20 @@
     
   }
   body{
-    -image: url(../static/Main_page_photo.jpg);
+    -image: url(../media/Main_page_photo.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     font-family:myFirstFont ;
 }
 body{
-  background-image: url(../static/Main_page_photo.jpg);
+  background-image: url(../media/Main_page_photo.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   font-family:myFirstFont ;
   animation: fadeIn 2s
 }
 .body2{
-background-image: url(../static/photoBlur.jpg);
+background-image: url(../media/photoBlur.jpg);
 background-repeat: no-repeat;
 background-size: cover;
   font-family:myFirstFont ;
@@ -187,7 +187,6 @@ font-family:  myFirstFont;
   margin-bottom: 100px;
 }
 .button-56 a {
-  color: var(--gray);
   text-decoration: none;
 }
 
@@ -389,12 +388,12 @@ margin-bottom: 30px;
 }
 @font-face {
   font-family: myFirstFont;
-  src: url(../static/Dosis-ExtraBold.ttf);
+  src: url(../media/Dosis-ExtraBold.ttf);
 
 }
 @font-face {
 font-family: mySecondFont;
-src: url(../static/Merienda-Regular.ttf);
+src: url(../media/Merienda-Regular.ttf);
 
 }
 #aftercompare
