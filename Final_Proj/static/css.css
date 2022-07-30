@@ -474,3 +474,9 @@ width:90px;
 .mapetc{
   grid-area: third;
 }
+#parking_map {
+  height: 350px;
+  width: 450px;
+  border-radius: 10px;
+  margin-bottom: 30px;
+}
