@@ -1,17 +1,8 @@
+
 from flask import Blueprint, render_template
 
 # catalog blueprint definition
-catalog = Blueprint('catalog', __name__, static_folder='static', static_url_path='/catalog', template_folder='templates')
-
-
-# Routes
-@catalog.route('/contact')
-def index():
-    return render_template('contact.html')
-from flask import Blueprint, render_template
-
-# catalog blueprint definition
-find_my = Blueprint('find_my', __name__, static_folder='static', static_url_path='/catalog', template_folder='templates')
+find_my = Blueprint('find_my', __name__, static_folder='static', static_url_path='/pages/find_my', template_folder='templates')
 
 
 # Routes
