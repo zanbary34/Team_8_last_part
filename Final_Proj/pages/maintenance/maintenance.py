@@ -71,6 +71,22 @@ def update_scooter_func():
     scooters_list = interact_db(query, query_type='fetch')
     return render_template('maintenance.html', approved=True, scooters=scooters_list)
 
+# @maintenance.route('/insert_scooter', methods=['POST'])
+# def insert_scooter():
+#     # scooter_id = request.form['scooter_id']
+#     battery = request.form['battery']
+#     longitude = request.form['longitude']
+#     latitude = request.form['latitude']
+#     firm = request.form['firm_name']
+#     helmet = request.form['helmet']
+#     city = request.form['city']
+#     query = "INSERT INTO scooters(battery_level, longitude, latitude, firm_name, is_with_helmet, city)  \
+#            VALUES ('%s','%s','%s','%s','%s','%s')" % (battery, longitude, latitude, firm, helmet, city)
+#     interact_db(query=query, query_type='commit')
+#     query = 'select * from scooters'
+#     scooters_list = interact_db(query, query_type='fetch')
+#     return render_template('maintenance.html', approved=True, scooters=scooters_list)
+
 @maintenance.route('/insert_scooter', methods=['POST'])
 def insert_scooter():
     # scooter_id = request.form['scooter_id']
