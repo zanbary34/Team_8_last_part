@@ -8,15 +8,15 @@ const navLinks = document.querySelectorAll('nav a').forEach(link => {
     }
   });
 
-  var locations = [
-    ["../static/media/parking icon.png", 31.2612,34.7684],
-    ["../static/media/parking icon.png", 31.264,34.7666],
-    ["../static/media/parking icon.png", 31.2655,34.7644],
-    ["../static/media/parking icon.png", 31.256887,34.794274],
-    ["../static/media/parking icon.png", 31.261221,34.801124],
-
-  ];
-  function init_parking_Map(z,t){
+  // var locations = [
+  //   ["../static/media/parking icon.png", 31.2612,34.7684],
+  //   ["../static/media/parking icon.png", 31.264,34.7666],
+  //   ["../static/media/parking icon.png", 31.2655,34.7644],
+  //   ["../static/media/parking icon.png", 31.256887,34.794274],
+  //   ["../static/media/parking icon.png", 31.261221,34.801124],
+  //
+  // ];
+  function init_parking_Map(z,t,locations){
   var map = new google.maps.Map(document.getElementById('parking_map'), {
     zoom: 15,
     center: new google.maps.LatLng(z, t),
@@ -24,14 +24,14 @@ const navLinks = document.querySelectorAll('nav a').forEach(link => {
   });
 
   var infowindow = new google.maps.InfoWindow();
-
+  console.log(locations);
   var marker, i;
   //parking locations
-  for (i = 0; i < locations.length; i++) {
+  for (let location of locations){
     marker = new google.maps.Marker({
-      position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+      position: new google.maps.LatLng(location[0], location[1]),
       icon: {
-        url: locations[i][0],
+        url: "../static/media/parking icon.png",
         labelOrigin: new google.maps.Point(55, 12)
       },
       map: map
@@ -51,6 +51,15 @@ const navLinks = document.querySelectorAll('nav a').forEach(link => {
   }
   //----- parking map /
   function showPicture() {
+    var input = document.getElementById('city').value;
+    let element = document.createElement('a');
+    element.href = window.location.pathname;
+    element.pathname = element.pathname+ '/'+ 'input';
+    fetch(element.href).then(
+            response => init_parking_Map(31.2612,34.7684,response)
+    ).catch(
+            err => console.log(err)
+    )
       if (navigator.geolocation) {
       console.log("in get location");
       navigator.geolocation.getCurrentPosition(showPosition);
@@ -58,7 +67,6 @@ const navLinks = document.querySelectorAll('nav a').forEach(link => {
       document.getElementById("location_p").innerHTML="Geolocation is not supported by this browser.";
       }
       document.getElementById("parking_map").style.visibility = "visible";
-      document.getElementById("afterNearby").style.visibility = "visible";
     }
     /initial the map with the current user location/
       function showPosition(position) {
