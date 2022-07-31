@@ -15,10 +15,10 @@ def redirect_parking():
 def redirect_parking_city(city):
     print (city)
     db= DBManager()
-    query = "select longitude, latitude from team8.parkings where city='Tel Aviv';"
+    query = "select longitude, latitude from team8.parkings where city='%s';" % city
     query = db.fetch(query)
-    rrr = json.dumps(query)
-    return rrr
+    print (query)
+    return jsonify(query)
 
 
 

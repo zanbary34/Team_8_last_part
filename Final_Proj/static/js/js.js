@@ -16,7 +16,8 @@ const navLinks = document.querySelectorAll('nav a').forEach(link => {
   //   ["../static/media/parking icon.png", 31.261221,34.801124],
   //
   // ];
-  function init_parking_Map(z,t,locations){
+  function init_parking_Map(z,t,response){
+    console.log(response[0])
   var map = new google.maps.Map(document.getElementById('parking_map'), {
     zoom: 15,
     center: new google.maps.LatLng(z, t),
@@ -24,12 +25,12 @@ const navLinks = document.querySelectorAll('nav a').forEach(link => {
   });
 
   var infowindow = new google.maps.InfoWindow();
-  console.log(locations);
   var marker, i;
   //parking locations
-  for (let location of locations){
+  for (const location of response){
+    console.log(location[0])
     marker = new google.maps.Marker({
-      position: new google.maps.LatLng(location[0], location[1]),
+      position: new google.maps.LatLng(location[1], location[0]),
       icon: {
         url: "../static/media/parking icon.png",
         labelOrigin: new google.maps.Point(55, 12)
@@ -54,26 +55,28 @@ const navLinks = document.querySelectorAll('nav a').forEach(link => {
     var input = document.getElementById('city').value;
     let element = document.createElement('a');
     element.href = window.location.pathname;
-    element.pathname = element.pathname+ '/'+ 'input';
+    element.pathname = element.pathname + '/'+ input;
     fetch(element.href).then(
-            response => init_parking_Map(31.2612,34.7684,response)
-    ).catch(
+            // response => init_parking_Map(31.2612,34.7684,response)
+          (response) => response.json())
+  .then(response => init_parking_Map(31.2612,34.7684,response))
+    .catch(
             err => console.log(err)
     )
       if (navigator.geolocation) {
       console.log("in get location");
-      navigator.geolocation.getCurrentPosition(showPosition);
+      // navigator.geolocation.getCurrentPosition(showPosition);
       } else {
       document.getElementById("location_p").innerHTML="Geolocation is not supported by this browser.";
       }
       document.getElementById("parking_map").style.visibility = "visible";
     }
     /initial the map with the current user location/
-      function showPosition(position) {
-          var z = position.coords.latitude;
-          var t = position.coords.longitude;
-          init_parking_Map(z,t);
-      }
+      // function showPosition(position) {
+      //     var z = position.coords.latitude;
+      //     var t = position.coords.longitude;
+      //     init_parking_Map(z,t);
+      // }
 
 
 /* build a comparison table*/
