@@ -1,0 +1,123 @@
+{% extends 'base.html' %}
+
+{% block tohen %}
+{% if not approved%}
+<div class="loginContainer">
+  <section id="content">
+    <form action="/checkPassword", method="post">
+      <h1>Login</h1>
+      <div>
+        <input type="text" placeholder="Username" name="username" />
+      </div>
+      <div>
+        <input type="password" placeholder="Password" name="password" />
+      </div>
+      <div>
+        <input type="submit" value="Log in" />
+        <a href="#">Lost your password?</a>
+        <a href="#">Register</a>
+      </div>
+    </form><!-- form -->
+
+  </section><!-- content -->
+</div><!-- container -->
+  </div>
+
+{% endif %}
+
+{% if approved%}
+<table class = scooters>
+
+    <tr class = tableHeadears>
+        <th>Scooter ID</th>
+        <th>Battery level</th>
+        <th>Longitude</th>
+        <th>Latitude</th>
+        <th>Firm</th>
+        <th>Includes helmet</th>
+        <th>City</th>
+    </tr>
+
+    <tr>
+        {#{{ scooter }}#}
+        <form action="/insert_scooter" method="post">
+            <th class = "new">New</th>
+            <th>
+                <input type="float" name="battery">
+            </th>
+            <th>
+                <input type="float" name="longitude" >
+            </th>
+            <th>
+                <input type="float" name="latitude" >
+            </th>
+            <th>
+                <input type="text" name="firm_name" >
+            </th>
+            <th>
+                <input type="number"  name="helmet" >
+            </th>
+            <th>
+                <input type="text"  name="city" >
+            </th>
+            <th>
+                <input type="submit" value="Insert">
+            </th>
+        </form>
+    </tr>
+
+{% for scooter in scooters %}
+    <tr class="tableCells">
+        <tr class="tableCells">
+            {#{{ scooter }}#}
+            <th>{{ scooter.scooter_id }}</th>
+            <th>{{ scooter.battery_level }}</th>
+            <th>{{ scooter.longitude }}</th>
+            <th>{{ scooter.latitude }}</th>
+            <th>{{ scooter.firm_name }}</th>
+            <th>{{ scooter.is_with_helmet }}</th>
+            <th>{{ scooter.city }}</th>
+            <th>
+                <form action="/delete_scooter" method="post">
+                    <input type="hidden" name="scooter_id" value="{{ scooter.scooter_id }}">
+                    <input type="submit" value="Delete">
+                </form>
+            </th>
+        </tr>
+
+        <tr>
+            {#{{ scooter }}#}
+            <form action="/update_scooter" method="post">
+            <th><input type="hidden" name="scooter_id" value="{{ scooter.scooter_id }}"></th>
+            <th>
+                <input type="float" placeholder="{{ scooter.battery_level }}" name="battery"/>
+            </th>
+            <th>
+                <input type="float" placeholder="{{ scooter.longitude }}" name="longitude" />
+            </th>
+            <th>
+                <input type="float" placeholder="{{ scooter.latitude }}" name="latitude" />
+            </th>
+            <th>
+                <input type="text" placeholder="{{ scooter.firm_name }}" name="firm_name" />
+            </th>
+            <th>
+                <input type="number" placeholder="{{ scooter.is_with_helmet }}" name="helmet" />
+            </th>
+            <th>
+                <input type="text" placeholder="{{ scooter.city }}" name="city" />
+            </th>
+            <th>
+                <input type="submit" value="Update">
+            </th>
+            </form>
+        </tr>
+    </tr>
+
+
+{% endfor %}
+</table>
+{% endif %}
+
+
+{% endblock %}

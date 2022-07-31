@@ -1,33 +1,27 @@
 from flask import Flask, redirect, render_template, request, session, url_for
 
-
 app = Flask(__name__)
 app.config.from_pyfile('settings.py')
 
-###### Pages
-## about
+# about
 from pages.about.about import about
-
 app.register_blueprint(about)
 
-## contact
+# contact
 from pages.contact.contact import contact
-
 app.register_blueprint(contact)
-## find_my
+
+# find_my
 from pages.find_my.find_my import find_my
-
 app.register_blueprint(find_my)
-#
-# ## Main menu
-# # from pages.main.main import main
-# # app.register_blueprint(main)
+
 # parking
-
 from pages.parking.parking import parking
-
 app.register_blueprint(parking)
 
+# maintenance
+from pages.maintenance.maintenance import maintenance
+app.register_blueprint(maintenance)
 
 @app.route('/')
 @app.route('/main')
