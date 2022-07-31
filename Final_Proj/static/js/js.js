@@ -9,11 +9,11 @@ const navLinks = document.querySelectorAll('nav a').forEach(link => {
   });
 
   var locations = [
-    ["../static/parking icon.png", 31.2612,34.7684],
-    ["../static/parking icon.png", 31.264,34.7666],
-    ["../static/parking icon.png", 31.2655,34.7644],
-    ["../static/parking icon.png", 31.256887,34.794274],
-    ["../static/parking icon.png", 31.261221,34.801124],
+    ["../static/media/parking icon.png", 31.2612,34.7684],
+    ["../static/media/parking icon.png", 31.264,34.7666],
+    ["../static/media/parking icon.png", 31.2655,34.7644],
+    ["../static/media/parking icon.png", 31.256887,34.794274],
+    ["../static/media/parking icon.png", 31.261221,34.801124],
 
   ];
   function init_parking_Map(z,t){
@@ -49,7 +49,7 @@ const navLinks = document.querySelectorAll('nav a').forEach(link => {
     })(marker, i));
   }
   }
-  /picture parking/
+  //----- parking map /
   function showPicture() {
       if (navigator.geolocation) {
       console.log("in get location");
@@ -72,9 +72,9 @@ const navLinks = document.querySelectorAll('nav a').forEach(link => {
 function calculate(name){
     var dist= document.getElementById('distInput').value;
   let prices  = [
-      { brand: "../static/Lime.jpg", name: "Lime", price: calculate("Lime",dist) },
-      { brand: "../static/Bird.png", name: "Bird", price: calculate("Bird",dist) },
-      { brand: "../static/Wind.png", name: "Wind", price: calculate("Wind",dist) },
+      { brand: "../static/media/Lime.jpg", name: "Lime", price: calculate("Lime",dist) },
+      { brand: "../static/media/Bird.png", name: "Bird", price: calculate("Bird",dist) },
+      { brand: "../static/media/Wind.png", name: "Wind", price: calculate("Wind",dist) },
     ];
   }
   /calculates estimated price/
@@ -360,118 +360,76 @@ window.addEventListener('load',()=>{
   MultiselectDropdown(window.MultiselectDropdownOptions);
 });
 
-/---------------- map/
-//   let map;
-
-// function initMap(z,t) {
-
-//   if (z == null ){
-//     map = new google.maps.Map(document.getElementById("map"), {
-//       zoom: 15,
-//       center: new google.maps.LatLng(32.0517, 34.7616),
-//       mapTypeId: "terrain",
-//     });
-//   }
-//   else{
-//   map = new google.maps.Map(document.getElementById("map"), {
-//     zoom: 15,
-//     center: new google.maps.LatLng(z, t),
-//     mapTypeId: "terrain",
+// //---------------- map------------/
+// var scooter_locations = [
+//   ["../static/media/Lime copy.jpg",    31.2599,34.797, '0.8'],
+//   ["../static/media/Lime copy.jpg",   31.2612,34.8012, '0.9'],
+//   ["../static/media/Wind copy.png",  31.2619,34.7968, '0.2'],
+//   ["../static/media/Bird copy.png",  31.2565,34.795, '0.5']
+// ];
+// function initMap(z,t){
+// var map = new google.maps.Map(document.getElementById('map'), {
+//   zoom: 15,
+//   center: new google.maps.LatLng(z, t),
+//   mapTypeId: google.maps.MapTypeId.ROADMAP
+// });
+//
+// var infowindow = new google.maps.InfoWindow();
+//
+// var marker, i;
+//
+// for (i = 0; i < locations.length; i++) {
+//   marker = new google.maps.Marker({
+//     position: new google.maps.LatLng(scooter_locations[i][1], scooter_locations[i][2]),
+//     icon: {
+//       url: scooter_locations[i][0],
+//       labelOrigin: new google.maps.Point(55, 12)
+//     },
+//     label: {
+//       text: (scooter_locations[i][3]*100 + '%'),
+//       color: getcolor(scooter_locations[i][3]),
+//       fontWeight: 'bold'
+//       // fontsize: "40px"
+//     },
+//     map: map
 //   });
+// // my location
+//   marker = new google.maps.Marker({
+//     position: new google.maps.LatLng(z,t),
+//     map: map
+//   });
+//   google.maps.event.addListener(marker, 'click', (function(marker, i) {
+//     return function() {
+//       infowindow.setContent(scooter_locations[i][3]*100);
+//       infowindow.open(map, marker);
+//     }
+//   })(marker, i));
 // }
-//   // Create a <script> tag and set the USGS URL as the source.
-//   const script = document.createElement("script");
-
-//   // This example uses a local copy of the GeoJSON stored at
-//   // http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_week.geojsonp
-//   script.src =
-//     "https://developers.google.com/maps/documentation/javascript/examples/json/earthquake_GeoJSONP.js";
-//   document.getElementsByTagName("head")[0].appendChild(script);
 // }
-
-var locations = [
-  ["../static/Lime copy.jpg",    31.2599,34.797, '0.8'],
-  ["../static/Lime copy.jpg",   31.2612,34.8012, '0.9'],
-  ["../static/Wind copy.png",  31.2619,34.7968, '0.2'],
-  ["../static/Bird copy.png",  31.2565,34.795, '0.5']
-];
-function initMap(z,t){
-var map = new google.maps.Map(document.getElementById('map'), {
-  zoom: 15,
-  center: new google.maps.LatLng(z, t),
-  mapTypeId: google.maps.MapTypeId.ROADMAP
-});
-
-var infowindow = new google.maps.InfoWindow();
-
-var marker, i;
-
-for (i = 0; i < locations.length; i++) {
-  marker = new google.maps.Marker({
-    position: new google.maps.LatLng(locations[i][1], locations[i][2]),
-    icon: {
-      url: locations[i][0],
-      labelOrigin: new google.maps.Point(55, 12)
-    },
-    label: {
-      text: (locations[i][3]*100 + '%'),
-      color: getcolor(locations[i][3]),
-      fontWeight: 'bold'
-      // fontsize: "40px"
-    },
-    map: map
-  });
-// my location
-  marker = new google.maps.Marker({
-    position: new google.maps.LatLng(z, t),
-    map: map
-  });
-  google.maps.event.addListener(marker, 'click', (function(marker, i) {
-    return function() {
-      infowindow.setContent(locations[i][3]*100);
-      infowindow.open(map, marker);
-    }
-  })(marker, i));
-}
-}
-function getcolor(battery_level){
- if (battery_level<0.3)
-    return "red"
-else if (battery_level<0.6)
-    return "black"
-else
-  return "green"
-}
-
-// const eqfeed_callback = function (results) {
-//   for (let i = 0; i < results.features.length; i++) {
-//     const coords = results.features[i].geometry.coordinates;
-//     const latLng = new google.maps.LatLng(coords[1], coords[0]);
-
-//     new google.maps.Marker({
-//       position: latLng,
-//       map: map,
-//     });
+// function getcolor(battery_level){
+//  if (battery_level<0.3)
+//     return "red"
+// else if (battery_level<0.6)
+//     return "black"
+// else
+//   return "green"
+// }
+//
+//
+// ///gets location from the user/
+// function GetLocation() {
+//   if (navigator.geolocation) {
+//   console.log("in get location");
+//   navigator.geolocation.getCurrentPosition(showPosition);
+//   } else {
+//   document.getElementById("location_p").innerHTML="Geolocation is not supported by this browser.";
 //   }
-// };
-// /initial the map/
-// window.initMap = initMap;
-// window.eqfeed_callback = eqfeed_callback;
-
-// /gets location from the user/
-function GetLocation() {
-  if (navigator.geolocation) {
-  console.log("in get location");
-  navigator.geolocation.getCurrentPosition(showPosition);
-  } else {
-  document.getElementById("location_p").innerHTML="Geolocation is not supported by this browser.";
-  }
-  document.getElementById("map").style.visibility = "visible";
-  document.getElementById("afterNearby").style.visibility = "visible";
-}
-/initial the map with the current user location/
-  function showPosition(position) {
-      var z = position.coords.latitude;
-      var t = position.coords.longitude;
-      initMap(z,t);
-  }
+//   document.getElementById("map").style.visibility = "visible";
+//   document.getElementById("afterNearby").style.visibility = "visible";
+// }
+// /initial the map with the current user location/
+//   function showPosition(position) {
+//       var z = position.coords.latitude;
+//       var t = position.coords.longitude;
+//       initMap(z,t);
+//   }
