@@ -14,7 +14,7 @@ def redirect_parking():
 @parking.route('/parking/<city>')
 def redirect_parking_city(city):
     print (city)
-    db= DBManager()
+    db=DBManager()
     query = "select longitude, latitude from team8.parkings where city='%s';" % city
     query = db.fetch(query)
     print (query)

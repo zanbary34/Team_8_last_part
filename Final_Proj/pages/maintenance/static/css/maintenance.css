@@ -289,11 +289,29 @@ form:after {
 }
 
 .logoutbutton{
-align-items: flex-end;
-  margin-left: 1450px;
+  align-items: flex-end;
+  margin-left: 92%;
   background-color: #23c483;
 }
 
 .logout{
   margin-bottom: 5px;
+}
+
+.helmet_firm_insert {
+  width: 100%;
+  height: 22px;
+  text-align: center;
+}
+
+.helmet_firm_update {
+  width: 100%;
+  height: 22px;
+  text-align: center;
+  color: red;
+}
+
+.error{
+  font-family: Arial;
+  color: red;
 }

@@ -7,7 +7,7 @@
 <h3>{{passwordMessage}}</h3>
 <div class="loginContainer">
   <section id="content">
-    <form action="/checkPassword", method="post">
+    <form action="/login", method="post">
       <h1>Login</h1>
       <div>
         <input type="text" placeholder="Username" name="username" />
@@ -35,6 +35,9 @@
             <input type="submit" class="logoutbutton" value="log-out">
         </form>
     </div>
+{% if error %}
+    <h4 class="error">Please insert valid values</h4>
+{% endif %}
 <table class = scooters>
 
     <tr class = tableHeadears>
@@ -50,22 +53,29 @@
     <tr>
         <form action="/insert_scooter" method="post">
             <th>
-                <input type="int" placeholder="New" name="scooter_id">
+                <input type="number" required placeholder="New" name="scooter_id">
             </th>
             <th>
-                <input type="float" name="battery">
+                <input type="number" required step="0.1" name="battery">
             </th>
             <th>
-                <input type="float" name="longitude" >
+                <input type="number" required step="0.0001" name="longitude" >
             </th>
             <th>
-                <input type="float" name="latitude" >
+                <input type="number" required step="0.0001" name="latitude" >
             </th>
             <th>
-                <input type="text" name="firm_name" >
+                 <select name="firm_name" class="helmet_firm_insert">
+                    <option value="bird">bird</option>
+                    <option value="lime">lime</option>
+                    <option value="wind">wind</option>
+                 </select>
             </th>
             <th>
-                <input type="number"  name="helmet" >
+                 <select name="helmet" class="helmet_firm_insert">
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                 </select>
             </th>
             <th>
                 <input type="text"  name="city" >
@@ -102,11 +112,24 @@
             <th><input type="hidden" name="longitude" value="{{ scooter.longitude }}" ></th>
             <th><input type="hidden" name="latitude" value="{{ scooter.latitude }}" ></th>
             <th>
+                 <select  name="firm_name" class="helmet_firm_update">
+                    <option value="bird">bird</option>
+                    <option value="lime">lime</option>
+                    <option value="wind">wind</option>
+                 </select>
+            </th>
+            <th>
+                 <select  name="helmet" class="helmet_firm_update">
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                 </select>
+            </th>
+{#            <th>
                 <input type="text" placeholder="{{ scooter.firm_name }}" name="firm_name" />
             </th>
             <th>
                 <input type="number" placeholder="{{ scooter.helmet }}" name="helmet" />
-            </th>
+            </th>#}
             <th><input type="hidden" name="city" value="{{ scooter.city }}"></th>
             <th>
                 <input type="submit" value="Update">
