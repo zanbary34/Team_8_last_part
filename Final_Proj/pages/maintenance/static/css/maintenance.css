@@ -269,7 +269,7 @@ form:after {
 }
 
 .tableCells{
-  font-size: medium;
+  font-size: large;
   border-collapse: separate;
 }
 
@@ -280,9 +280,20 @@ form:after {
 
 .new{
   color: red;
-  font-size: x-large;
+  font-size: medium;
 }
 
 ::placeholder {
    text-align: center;
+   color: red;
+}
+
+.logoutbutton{
+align-items: flex-end;
+  margin-left: 1450px;
+  background-color: #23c483;
+}
+
+.logout{
+  margin-bottom: 5px;
 }
