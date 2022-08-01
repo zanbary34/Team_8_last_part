@@ -12,14 +12,15 @@
         </div>
         <div class="tohen">
           <div>
-            <label for="brand">brand: </label>
-            <select id="brands" name="brands" multiple>
-              <option selected value="1">Lime</option>
-              <option selected value="2">Bird</option>
-              <option selected value="3">Wind</option>
-            </select>
+            <label for="city">city: </label>
+             <select class = "combo" name="cities"  id="brands">
+                    <option value="Tel Aviv">Tel Aviv</option>
+                    <option value="Beer Sheva">Beer Sheva</option>
+                    <option value="Jerusalem">Jerusalem</option>
+                    <option value="Los Angeles">LA</option>
+              </select>
           </div>
-            <button class="nearbyBtn" onclick="GetLocation()">Nearby Scooters</button></br>
+            <button class="nearbyBtn" onclick="showPicture()">Nearby Scooters</button></br>
           </div>
         </div>
         <div class="mapetc" >
@@ -44,5 +45,5 @@
   </div>
 {% endblock %}
 {% block page_js %}
-    <script src="{{ url_for('find_my.static', filename='find_my.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/js.js') }}"></script>
 {% endblock %}
