@@ -8,17 +8,23 @@ const navLinks = document.querySelectorAll('nav a').forEach(link => {
     }
   });
 
-  // var locations = [
-  //   ["../static/media/parking icon.png", 31.2612,34.7684],
-  //   ["../static/media/parking icon.png", 31.264,34.7666],
-  //   ["../static/media/parking icon.png", 31.2655,34.7644],
-  //   ["../static/media/parking icon.png", 31.256887,34.794274],
-  //   ["../static/media/parking icon.png", 31.261221,34.801124],
-  //
-  // ];
+  function check_pic(brand)
+  {
+    if (brand == "lime")
+      return brands_pics[0]
+    else if (brand == "bird")
+        return brands_pics[1]
+    else
+      return brands_pics[2]
+  }
+
   function init_parking_Map(z,t,response){
     console.log(response[0])
-  var map = new google.maps.Map(document.getElementById('parking_map'), {
+    if (document.URL.includes("find_my"))
+      var a=  document.getElementById('map')
+    else
+      var a=  document.getElementById('parking_map')
+    var map = new google.maps.Map(a, {
     zoom: 15,
     center: new google.maps.LatLng(z, t),
     mapTypeId: google.maps.MapTypeId.ROADMAP
@@ -29,10 +35,14 @@ const navLinks = document.querySelectorAll('nav a').forEach(link => {
   //parking locations
   for (const location of response){
     console.log(location[0])
+    if (document.URL.includes("find_my"))
+       var url_s = check_pic(location[2])
+    else
+      var url_s = "../static/media/parking icon.png"
     marker = new google.maps.Marker({
       position: new google.maps.LatLng(location[1], location[0]),
       icon: {
-        url: "../static/media/parking icon.png",
+        url: url_s,
         labelOrigin: new google.maps.Point(55, 12)
       },
       map: map
@@ -51,45 +61,69 @@ const navLinks = document.querySelectorAll('nav a').forEach(link => {
   }
   }
   //----- parking map /
+
   function showPicture() {
-    var input = document.getElementById('city').value;
+    if (document.URL.includes("find_my")) {
+      var input = document.getElementById('brands').value;
+    } else
+      var input = document.getElementById('city').value;
+    console.log(input)
+    cordinate = check_city(input);
     let element = document.createElement('a');
     element.href = window.location.pathname;
-    element.pathname = element.pathname + '/'+ input;
+    element.pathname = element.pathname + '/' + input;
     fetch(element.href).then(
-            // response => init_parking_Map(31.2612,34.7684,response)
-          (response) => response.json())
-  .then(response => init_parking_Map(31.2612,34.7684,response))
-    .catch(
+        // response => init_parking_Map(31.2612,34.7684,response)
+        (response) => response.json())
+        .then(response => init_parking_Map(cordinate[0], cordinate[1], response))
+        .catch(
             err => console.log(err)
-    )
-      if (navigator.geolocation) {
+        )
+    if (navigator.geolocation) {
       console.log("in get location");
       // navigator.geolocation.getCurrentPosition(showPosition);
-      } else {
-      document.getElementById("location_p").innerHTML="Geolocation is not supported by this browser.";
-      }
-      document.getElementById("parking_map").style.visibility = "visible";
+    } else {
+      document.getElementById("location_p").innerHTML = "Geolocation is not supported by this browser.";
     }
-    /initial the map with the current user location/
-      // function showPosition(position) {
-      //     var z = position.coords.latitude;
-      //     var t = position.coords.longitude;
-      //     init_parking_Map(z,t);
-      // }
-
-
+    if (document.URL.includes("find_my")) {
+      document.getElementById("map").style.visibility = "visible";
+      document.getElementById("afterNearby").style.visibility = "visible";
+    }
+    else
+      document.getElementById("parking_map").style.visibility = "visible";
+  }
+function check_city(city)
+{
+  cordinate = [];
+  if (city == "Tel Aviv")
+    cordinate = [32.109333, 34.855499];
+  else if (city == "Beer Sheva")
+    cordinate = [31.2518, 34.7913];
+  else if (city == "Jerusalem")
+    cordinate = [31.771959,35.217018];
+  else
+    cordinate = [34.052235,-118.243683]
+  return cordinate
+}
 /* build a comparison table*/
-function calculate(name){
+function calculate(){
+      console.log("ffff")
     var dist= document.getElementById('distInput').value;
   let prices  = [
-      { brand: "../static/media/Lime.jpg", name: "Lime", price: calculate("Lime",dist) },
-      { brand: "../static/media/Bird.png", name: "Bird", price: calculate("Bird",dist) },
-      { brand: "../static/media/Wind.png", name: "Wind", price: calculate("Wind",dist) },
+      { brand: brands_pics[0], name: "Lime", price: calculate_dist("Lime",dist) },
+      { brand: brands_pics[1], name: "Bird", price: calculate_dist("Bird",dist) },
+      { brand: brands_pics[2], name: "Wind", price: calculate_dist("Wind",dist) },
     ];
+    var table = document.querySelector("table");
+    let data = Object.keys(prices[0]);
+    generateTableHead(table, data);
+    generateTable(table, prices);
+    replace();
   }
-  /calculates estimated price/
-  function calculate(name,dist)
+ let brands_pics = ["../static/media/Lime copy.jpg","../static/media/Bird copy.png","../static/media/Wind copy.png"]
+
+  // /calculates estimated price/
+  function calculate_dist(name,dist)
     {
       if (name == "Lime")
       {
@@ -137,11 +171,7 @@ function calculate(name){
         }
       }
     }
-    var table = document.querySelector("table");
-    let data = Object.keys(prices[0]);
-    generateTableHead(table, data);
-    generateTable(table, prices);
-    replace();
+
     /replace the content after pressing calculate/
     function replace()
     {
