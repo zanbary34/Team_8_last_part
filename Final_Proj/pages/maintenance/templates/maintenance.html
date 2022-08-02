@@ -17,8 +17,8 @@
       </div>
       <div>
         <input type="submit" value="Log in" />
-        <a href="#">Lost your password?</a>
-        <a href="#">Register</a>
+        <a href="https://www.youtube.com/watch?v=u92RWKB3CR4">Lost your password?</a>
+        <a href="https://www.youtube.com/watch?v=f6rYxoA4UWw">Register</a>
       </div>
     </form><!-- form -->
 
@@ -36,7 +36,7 @@
         </form>
     </div>
      <form action="/steals" method="get">
-         <input type="submit" value="Look for scooters out of range">
+         <input class="nearbyBtn" type="submit" value="Look for scooters out of range">
      </form>
 {% if error %}
     <h4 class="error">Please insert valid values</h4>
@@ -81,7 +81,12 @@
                  </select>
             </th>
             <th>
-                <input type="text"  name="city" >
+                <select name="city" class="helmet_firm_insert">
+                    <option value="Tel Aviv">Tel Aviv</option>
+                    <option value="Beer Sheva">Beer Sheva</option>
+                    <option value="Jerusalem">Jerusalem</option>
+                    <option value="Los Angeles">LA</option>
+                </select>
             </th>
             <th>
                 <input type="submit" value="Insert">

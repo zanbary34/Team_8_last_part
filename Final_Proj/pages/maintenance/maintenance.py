@@ -47,7 +47,8 @@ def insert_scooter():
     helmet = request.form['helmet']
     city = request.form['city']
     tech = Technician(username=session['username'], password=session['password'])
-    if 0 <= float(battery_level) <= 1 and int(scooter_id) > 0 and float(longitude) > 0 and float(latitude) > 0:
+    if 0 <= float(battery_level) <= 1 and int(scooter_id) > 0 and -180 <= float(longitude) <= 180\
+       and -180 <= float(latitude) <= 180 and tech.newScooter(scooter_id):
         scooter = Scooter(scooter_id, battery_level, longitude, latitude, firm, helmet, city)
         scooter.insertScooter()
         return render_template('maintenance.html', approved=True, scooters=tech.getScooters(),

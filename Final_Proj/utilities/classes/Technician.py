@@ -42,3 +42,13 @@ class Technician:
         query = "select longitude, latitude,firm_name from team8.scooters where city='%s';" % city
         scooters = self.db.fetch(query)
         return scooters
+
+    def newScooter(self, id):
+        query = 'select scooter_id from scooters'
+        scootersIDs = self.db.fetch(query)
+        for serialNum in scootersIDs:
+            serialNum = json.loads(json.dumps(serialNum))
+            id = int(json.loads(json.dumps(id)))
+            if serialNum[0] == id:
+                return False
+        return True

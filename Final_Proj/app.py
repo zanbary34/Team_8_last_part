@@ -1,7 +1,10 @@
+from datetime import timedelta
 from flask import Flask, redirect, render_template, request, session, url_for
 
 app = Flask(__name__)
 app.config.from_pyfile('settings.py')
+app.config['SESSION_PERMANENT'] = True
+app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(minutes=20)
 
 # about
 from pages.about.about import about

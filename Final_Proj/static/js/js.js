@@ -96,7 +96,7 @@ function check_city(city)
 {
   cordinate = [];
   if (city == "Tel Aviv")
-    cordinate = [32.109333, 34.855499];
+    cordinate = [32.073317, 34.782051];
   else if (city == "Beer Sheva")
     cordinate = [31.2518, 34.7913];
   else if (city == "Jerusalem")
