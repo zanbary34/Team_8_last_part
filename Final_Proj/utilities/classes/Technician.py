@@ -35,3 +35,8 @@ class Technician:
         query = "select longitude, latitude from team8.parkings where city='%s';" % city
         parking = self.db.fetch(query)
         return parking
+
+    def get_scooters_city(self,city):
+        query = "select longitude, latitude,firm_name from team8.scooters where city='%s';" % city
+        parking = self.db.fetch(query)
+        return parking
