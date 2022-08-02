@@ -29,15 +29,15 @@
 {% endif %}
 
 {% if approved and not lookingSteal%}
-     <form action="/steals" method="get">
-         <input type="submit" value="Look for scooters out of range">
-     </form>
     <div class="logout">
         <h3>Hello {{ message }}, </h3>
         <form action="/logout_tech" method="get">
             <input type="submit" class="logoutbutton" value="log-out">
         </form>
     </div>
+     <form action="/steals" method="get">
+         <input type="submit" value="Look for scooters out of range">
+     </form>
 {% if error %}
     <h4 class="error">Please insert valid values</h4>
 {% endif %}

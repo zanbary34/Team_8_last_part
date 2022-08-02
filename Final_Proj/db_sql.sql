@@ -49,3 +49,15 @@ INSERT INTO team8.parkings (id, longitude, latitude, city, is_free) VALUES (7, 3
 INSERT INTO team8.parkings (id, longitude, latitude, city, is_free) VALUES (8, 34.7684, 31.2625, 'Beer Sheva', 1);
 INSERT INTO team8.parkings (id, longitude, latitude, city, is_free) VALUES (9, 34.7666, 31.264, 'Beer Sheva', 1);
 INSERT INTO team8.parkings (id, longitude, latitude, city, is_free) VALUES (10, 34.7644, 31.2655, 'Beer Sheva', 1);
+
+create table technicians
+(
+    username varchar(20) not null
+        primary key,
+    password varchar(20) not null
+);
+
+INSERT INTO team8.technicians (username, password) VALUES ('Amir', '2424');
+INSERT INTO team8.technicians (username, password) VALUES ('Amit', '1410');
+INSERT INTO team8.technicians (username, password) VALUES ('Roy', '1');
+INSERT INTO team8.technicians (username, password) VALUES ('Sefi', '2306');
