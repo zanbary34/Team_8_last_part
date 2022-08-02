@@ -28,6 +28,3 @@ class Scooter:
         query = "UPDATE scooters SET firm_name = '%s', helmet = '%s'WHERE scooter_id='%s';" \
                 % (self.firm_name, self.helmet, self.scooter_id)
         self.db.commit(query)
-
-    def distance(self):
-        return 555

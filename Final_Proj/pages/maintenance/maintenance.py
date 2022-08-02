@@ -96,7 +96,7 @@ def findStolenScooters():
     for row in jsonObject:
         dist = geopy.distance.geodesic((row[1],row[2]), (row[5],row[6])).km
         if dist > 20:
-            row[5]=dist
+            row[5]=round(dist, 1)
             stolenScooters.append(row)
     return render_template('maintenance.html', approved=True, lookingSteal=True, stolenScooters=stolenScooters,
                            tech=tech)
