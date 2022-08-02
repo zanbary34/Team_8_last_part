@@ -18,3 +18,20 @@ class Technician:
             if username == tech.username:
                 return tech.password
         return ""
+
+    def getParkingVsScooters(self):
+        query = 'select s.scooter_id, s.longitude, s.latitude, s.firm_name, s.city, max(p.longitude) as pLat \
+                ,max(p.latitude) as pLon \
+                from scooters as s join parkings as p on s.city = p.city \
+                where s.battery_level > 0 \
+                group by s.scooter_id \
+                order by s.scooter_id'
+        scooters = self.db.fetch(query)
+        print(scooters)
+        return scooters
+
+
+    def get_parking(self,city):
+        query = "select longitude, latitude from team8.parkings where city='%s';" % city
+        parking = self.db.fetch(query)
+        return parking

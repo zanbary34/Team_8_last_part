@@ -4,6 +4,8 @@ from flask import Flask, redirect, url_for, render_template, request, session, B
 from utilities.classes.Technician import Technician
 from utilities.classes.Scooter import Scooter
 from utilities.db.db_manager import dbManager
+import geopy.distance
+import json
 
 maintenance = Blueprint('maintenance', __name__, static_folder='static', static_url_path='/maintenance',
                         template_folder='templates')
@@ -84,3 +86,19 @@ def logout_tech():
     session['loggedin'] = False
     session.clear()
     return redirect('/main')
+
+@maintenance.route('/steals', methods=['GET'])
+def findStolenScooters():
+    tech = Technician(session['username'], session['password'])
+    scooterList = tech.getParkingVsScooters()
+    stolenScooters = []
+    for row in scooterList:
+        dis = geopy.distance.geodesic((row[1],row[2]), (row[5],row[6])).km
+        if dis > 20:
+            stolenScooters.append(row)
+        # for i in range(0,5):
+            # print(scooter[0][i]
+    # stolenScooters = [Scooter()]
+    # return render_template('maintenance.html', approved=True, lookingSteal=True, stolenScooters=stolenScooters,
+    #                        tech=tech)
+    return render_template('maintenance.html')

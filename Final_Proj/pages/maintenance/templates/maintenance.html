@@ -28,7 +28,10 @@
 
 {% endif %}
 
-{% if approved%}
+{% if approved and not lookingSteal%}
+     <form action="/steals" method="get">
+         <input type="submit" value="Look for scooters out of range">
+     </form>
     <div class="logout">
         <h3>Hello {{ message }}, </h3>
         <form action="/logout_tech" method="get">
@@ -86,10 +89,10 @@
         </form>
     </tr>
 
-{% for scooter in scooters %}
+{% for scooter in scooters%}
     <tr class="tableCells">
         <tr class="tableCells">
-            <th>{{ scooter.scooter_id }}</th>
+            <th>{{ scooter[0] }}</th>
             <th>{{ scooter.battery_level }}</th>
             <th>{{ scooter.longitude }}</th>
             <th>{{ scooter.latitude }}</th>
@@ -105,7 +108,6 @@
         </tr>
 
         <tr>
-            {#{{ scooter }}#}
             <form action="/update_scooter" method="post">
             <th><input type="hidden" name="scooter_id" value="{{ scooter.scooter_id }}"></th>
             <th><input type="hidden" name="battery" value="{{ scooter.battery_level }}" ></th>
@@ -124,12 +126,6 @@
                     <option value="No">No</option>
                  </select>
             </th>
-{#            <th>
-                <input type="text" placeholder="{{ scooter.firm_name }}" name="firm_name" />
-            </th>
-            <th>
-                <input type="number" placeholder="{{ scooter.helmet }}" name="helmet" />
-            </th>#}
             <th><input type="hidden" name="city" value="{{ scooter.city }}"></th>
             <th>
                 <input type="submit" value="Update">
@@ -142,6 +138,39 @@
 {% endfor %}
 </table>
 {% endif %}
+
+    {% if lookingSteal and approved%}
+     <form action="/login" method="post">
+        <input type="hidden" name="username" value="{{ tech.username }}">
+        <input type="hidden" name="password" value="{{ tech.password }}">
+        <input type="submit" value="Back to the whole list">
+     </form>
+<table class = scooters>
+    <tr class = tableHeadears>
+        <th>Scooter ID</th>
+        <th>Longitude</th>
+        <th>Latitude</th>
+        <th>Firm</th>
+        <th>City</th>
+        <th>Distance</th>
+    </tr>
+
+{% for scooter in stolenScooters %}
+    <tr class="tableCells">
+        <tr class="tableCells">
+            <th>{{ scooter.scooter_id }}</th>
+            <th>{{ scooter.longitude }}</th>
+            <th>{{ scooter.latitude }}</th>
+            <th>{{ scooter.firm_name }}</th>
+            <th>{{ scooter.city }}</th>
+            <th>{{ scooter.distance() }}</th>
+        </tr>
+    </tr>
+
+
+{% endfor %}
+</table>
+    {% endif %}
 
 
 {% endblock %}

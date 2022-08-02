@@ -29,5 +29,5 @@ class Scooter:
                 % (self.firm_name, self.helmet, self.scooter_id)
         self.db.commit(query)
 
-    def batteryInRange(self):
-        return True
+    def distance(self):
+        return 555
