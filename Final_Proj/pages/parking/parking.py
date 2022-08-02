@@ -1,5 +1,6 @@
 from flask import Blueprint, render_template, request, jsonify
-from utilities.db.db_manager import DBManager
+
+from utilities.classes.Technician import Technician
 import json
 # catalog blueprint definition
 parking = Blueprint('parking', __name__, static_folder='static', static_url_path='/parking', template_folder='templates')
@@ -13,12 +14,10 @@ def redirect_parking():
 
 @parking.route('/parking/<city>')
 def redirect_parking_city(city):
-    print (city)
-    db=DBManager()
-    query = "select longitude, latitude from team8.parkings where city='%s';" % city
-    query = db.fetch(query)
-    print (query)
-    return jsonify(query)
+    tech = Technician()
+    parking = tech.get_parking(city)
+    print(parking)
+    return jsonify(parking)
 
 
 

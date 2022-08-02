@@ -33,6 +33,8 @@ INSERT INTO team8.parkings (id, longitude, latitude, city, is_free) VALUES (7, 3
 INSERT INTO team8.parkings (id, longitude, latitude, city, is_free) VALUES (8, 34.7684, 31.2625, 'Beer Sheva', 1);
 INSERT INTO team8.parkings (id, longitude, latitude, city, is_free) VALUES (9, 34.7666, 31.264, 'Beer Sheva', 1);
 INSERT INTO team8.parkings (id, longitude, latitude, city, is_free) VALUES (10, 34.7644, 31.2655, 'Beer Sheva', 1);
+INSERT INTO team8.parkings (id, longitude, latitude, city, is_free) VALUES (11, 31.2521, 34.7916, 'Beer Sheva', 1);
+INSERT INTO team8.parkings (id, longitude, latitude, city, is_free) VALUES (12, 31.2521, 34.7913, 'Beer Sheva', 1);
 
 
 create table scooters

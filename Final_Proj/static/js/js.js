@@ -96,7 +96,7 @@ function check_city(city)
 {
   cordinate = [];
   if (city == "Tel Aviv")
-    cordinate = [32.073317, 34.782051];
+    cordinate = [32.073316, 34.782051];
   else if (city == "Beer Sheva")
     cordinate = [31.2518, 34.7913];
   else if (city == "Jerusalem")
@@ -109,10 +109,11 @@ function check_city(city)
 function calculate(){
       console.log("ffff")
     var dist= document.getElementById('distInput').value;
+
   let prices  = [
-      { brand: brands_pics[0], name: "Lime", price: calculate_dist("Lime",dist) },
-      { brand: brands_pics[1], name: "Bird", price: calculate_dist("Bird",dist) },
-      { brand: brands_pics[2], name: "Wind", price: calculate_dist("Wind",dist) },
+      { brand: "../static/media/Lime.jpg", name: "Lime", price: calculate_dist("Lime",dist) },
+      { brand: "../static/media/Bird.png", name: "Bird", price: calculate_dist("Bird",dist) },
+      { brand: "../static/media/Wind.png", name: "Wind", price: calculate_dist("Wind",dist) },
     ];
     var table = document.querySelector("table");
     let data = Object.keys(prices[0]);

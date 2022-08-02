@@ -2,6 +2,7 @@
 from flask import Blueprint, render_template, jsonify
 
 # catalog blueprint definition
+from utilities.classes.Technician import Technician
 from utilities.db.db_manager import DBManager
 
 find_my = Blueprint('find_my', __name__, static_folder='static', static_url_path='/find_my', template_folder='templates')
@@ -15,9 +16,7 @@ def index_find_my():
 
 @find_my.route('/find_my/<city>')
 def redirect_parking_city(city):
-    print (city)
-    db= DBManager()
-    query = "select longitude, latitude,firm_name from team8.scooters where city='%s';" % city
-    query = db.fetch(query)
-    print (query)
-    return jsonify(query)
+    tech = Technician()
+    scooters = tech.get_scooters_city(city)
+    print(scooters)
+    return jsonify(scooters)

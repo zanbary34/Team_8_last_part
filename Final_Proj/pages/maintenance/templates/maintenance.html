@@ -31,13 +31,17 @@
 {% if approved and not lookingSteal%}
     <div class="logout">
         <h3>Hello {{ message }}, </h3>
-        <form action="/logout_tech" method="get">
-            <input type="submit" class="logoutbutton" value="log-out">
-        </form>
-    </div>
-     <form action="/steals" method="get">
-         <input class="nearbyBtn" type="submit" value="Look for scooters out of range">
+          <span>
+    <form action="/steals" method="get">
+         <input class="nearbyBtn"  id="range" type="submit" value="Scooters Out Of Range">
      </form>
+            </span>
+        <form action="/logout_tech" method="get">
+            <input  type="submit" class="logoutbutton" value="log-out">
+        </form>
+
+    </div>
+
 {% if error %}
     <h4 class="error">Please insert valid values</h4>
 {% endif %}
@@ -89,7 +93,7 @@
                 </select>
             </th>
             <th>
-                <input type="submit" value="Insert">
+                <input   class="nearbyBtn" id="insert"  type="submit" value="Insert">
             </th>
         </form>
     </tr>
@@ -107,7 +111,7 @@
             <th>
                 <form action="/delete_scooter" method="post">
                     <input type="hidden" name="scooter_id" value="{{ scooter.scooter_id }}">
-                    <input type="submit" value="Delete">
+                    <input class="nearbyBtn" id="delete" type="submit" value="Delete">
                 </form>
             </th>
         </tr>
@@ -133,7 +137,7 @@
             </th>
             <th><input type="hidden" name="city" value="{{ scooter.city }}"></th>
             <th>
-                <input type="submit" value="Update">
+                <input class="nearbyBtn" id="update" type="submit" value="Update">
             </th>
             </form>
         </tr>
@@ -148,7 +152,7 @@
      <form action="/login" method="post">
         <input type="hidden" name="username" value="{{ tech.username }}">
         <input type="hidden" name="password" value="{{ tech.password }}">
-        <input type="submit" value="Back to the whole list">
+        <input class="nearbyBtn" type="submit" value="Back">
      </form>
 <table class = scooters>
     <tr class = tableHeadears>
