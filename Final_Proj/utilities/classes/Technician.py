@@ -1,3 +1,7 @@
+import json
+
+from flask import jsonify
+
 from utilities.db.db_manager import DBManager
 
 class Technician:
@@ -27,9 +31,7 @@ class Technician:
                 group by s.scooter_id \
                 order by s.scooter_id'
         scooters = self.db.fetch(query)
-        print(scooters)
-        return scooters
-
+        return json.dumps(scooters)
 
     def get_parking(self,city):
         query = "select longitude, latitude from team8.parkings where city='%s';" % city
@@ -38,5 +40,5 @@ class Technician:
 
     def get_scooters_city(self,city):
         query = "select longitude, latitude,firm_name from team8.scooters where city='%s';" % city
-        parking = self.db.fetch(query)
-        return parking
+        scooters = self.db.fetch(query)
+        return scooters

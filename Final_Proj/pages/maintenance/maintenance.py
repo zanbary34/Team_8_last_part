@@ -91,14 +91,12 @@ def logout_tech():
 def findStolenScooters():
     tech = Technician(session['username'], session['password'])
     scooterList = tech.getParkingVsScooters()
+    jsonObject = json.loads(scooterList)
     stolenScooters = []
-    for row in scooterList:
-        dis = geopy.distance.geodesic((row[1],row[2]), (row[5],row[6])).km
-        if dis > 20:
+    for row in jsonObject:
+        dist = geopy.distance.geodesic((row[1],row[2]), (row[5],row[6])).km
+        if dist > 20:
+            row[5]=dist
             stolenScooters.append(row)
-        # for i in range(0,5):
-            # print(scooter[0][i]
-    # stolenScooters = [Scooter()]
-    # return render_template('maintenance.html', approved=True, lookingSteal=True, stolenScooters=stolenScooters,
-    #                        tech=tech)
-    return render_template('maintenance.html')
+    return render_template('maintenance.html', approved=True, lookingSteal=True, stolenScooters=stolenScooters,
+                           tech=tech)

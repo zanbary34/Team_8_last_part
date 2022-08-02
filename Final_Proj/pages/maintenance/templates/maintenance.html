@@ -92,7 +92,7 @@
 {% for scooter in scooters%}
     <tr class="tableCells">
         <tr class="tableCells">
-            <th>{{ scooter[0] }}</th>
+            <th>{{ scooter.scooter_id }}</th>
             <th>{{ scooter.battery_level }}</th>
             <th>{{ scooter.longitude }}</th>
             <th>{{ scooter.latitude }}</th>
@@ -158,12 +158,12 @@
 {% for scooter in stolenScooters %}
     <tr class="tableCells">
         <tr class="tableCells">
-            <th>{{ scooter.scooter_id }}</th>
-            <th>{{ scooter.longitude }}</th>
-            <th>{{ scooter.latitude }}</th>
-            <th>{{ scooter.firm_name }}</th>
-            <th>{{ scooter.city }}</th>
-            <th>{{ scooter.distance() }}</th>
+            <th>{{ scooter[0] }}</th>
+            <th>{{ scooter[1] }}</th>
+            <th>{{ scooter[2] }}</th>
+            <th>{{ scooter[3] }}</th>
+            <th>{{ scooter[4] }}</th>
+            <th>{{ scooter[5] }}</th>
         </tr>
     </tr>
 
